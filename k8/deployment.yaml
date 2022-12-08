@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mytomcat-deployment
+spec:
+ strategy:
+   type: RollingUpdate
+ replicas: 2
+ selector:
+   matchLabels:
+     app: tomcat-frontend
+ template:
+   metadata:
+    name: myPod01
+    labels:
+      app: tomcat-frontend
+   spec:
+    containers:
+    - name: tomcat
+      imagePullPolicy: Always
+      image: gauravdemo06/tomcat-webapp:v1
+      ports:
+        - containerPort: 8080
