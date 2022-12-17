@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mytomcat-service
+  name: mytomcat-stage-service
 spec:
   type: NodePort
   ports:
     - port: 8080 # port on which clusterIP will listen on
       targetPort: 8080 # container Port
-      nodePort: 30001
+      nodePort: 30002
   selector:
-    app: tomcat-frontend
+    app: tomcat-stage-frontend
